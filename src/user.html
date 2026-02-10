@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="dist/output.css" />
+    <link rel="stylesheet" href="/dist/input.css" />
+    <link rel="stylesheet" href="home.css" />
+  </head>
+  <body class="bg-gray-100">
+    <div class="flex min-h-screen">
+      <!-- Sidebar -->
+      <aside class="w-64 bg-indigo-600 text-white p-5">
+        <h1 class="text-2xl font-bold mb-8">Admin Panel</h1>
+        <nav class="space-y-3">
+          <a href="home.html" class="block hover:bg-indigo-500 p-2 rounded"
+            >Dashboard</a
+          >
+          <a href="user.html" class="block bg-indigo-500 p-2 rounded"
+            >User Data</a
+          >
+          <a href="produk.html" class="block hover:bg-indigo-500 p-2 rounded"
+            >Product Data</a
+          >
+        </nav>
+      </aside>
+
+      <!-- Main -->
+      <form id="userForm">
+        <input type="text" id="name" placeholder="Nama" required />
+        <input type="email" id="email" placeholder="Email" required />
+        <select id="gender">
+          <option value="Laki-laki">Laki-laki</option>
+          <option value="Perempuan">Perempuan</option>
+        </select>
+        <button type="submit">Tambah User</button>
+      </form>
+      
+
+    <script src="js/user.js"></script>
+  </body>
+</html>

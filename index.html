@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="./dist/output.css" />
+    <link rel="stylesheet" href="input.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body class="bg-gray-100">
+    <nav class="bg-slate-900 text-white px-8 py-4 flex justify-between">
+      <h1 class="font-bold text-lg">Admin Panel</h1>
+      <div class="space-x-6">
+        <a href="index.html" class="hover:text-indigo-400">Dashboard</a>
+        <a href="user.html" class="hover:text-indigo-400">User</a>
+        <a href="product.html" class="hover:text-indigo-400">Product</a>
+      </div>
+    </nav>
+
+    <section class="p-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
+        <p class="text-slate-500 text-sm">Total User</p>
+        <h2 id="totalUser" class="text-3xl font-bold mt-2">0</h2>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
+        <p class="text-slate-500 text-sm">Total Produk</p>
+        <h2 id="totalProduct" class="text-3xl font-bold mt-2">0</h2>
+      </div>
+    </section>
+    <script src="js/index.js"></script>
+  </body>
+</html>
