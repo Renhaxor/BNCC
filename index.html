@@ -7,93 +7,117 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
-  <body class="bg-slate-100 text-slate-800">
+  
+<body class="bg-gray-50 text-gray-800">
 
-<div class="flex min-h-screen">
+<div class="flex h-screen overflow-hidden">
 
   <!-- SIDEBAR -->
-  <aside class="w-64 bg-white border-r hidden md:flex flex-col">
+  <aside class="hidden md:flex md:flex-col w-64 bg-white border-r">
+
     <div class="px-6 py-5 border-b">
-      <h1 class="text-xl font-bold text-indigo-600">Admin Panel</h1>
-      <p class="text-sm text-slate-400">Management System</p>
+      <h1 class="text-xl font-bold text-primary">Admin Panel</h1>
+      <p class="text-sm text-gray-400">Management System</p>
     </div>
 
     <nav class="flex-1 px-4 py-6 space-y-2">
+
       <a href="index.html"
-         class="flex items-center gap-3 px-4 py-3 rounded-lg bg-indigo-50 text-indigo-600 font-medium">
+         class="flex items-center px-4 py-3 rounded-lg bg-primary/10 text-primary font-medium">
         Dashboard
       </a>
 
       <a href="users.html"
-         class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-slate-100">
+         class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-100 transition">
         User Data
       </a>
 
       <a href="products.html"
-         class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-slate-100">
+         class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-100 transition">
         Product Data
       </a>
+
     </nav>
+
   </aside>
 
-  <!-- MAIN CONTENT -->
-  <main class="flex-1 p-6 md:p-10">
+  <!-- MAIN -->
+  <div class="flex flex-col flex-1">
 
-    <!-- HEADER -->
-    <div class="mb-8">
-      <h2 class="text-3xl font-semibold">Dashboard</h2>
-      <p class="text-slate-500 mt-1">
-        Overview data sistem admin
-      </p>
-    </div>
+    <!-- TOPBAR -->
+    <header class="bg-white border-b px-6 py-4 flex justify-between items-center">
+      <h2 class="text-2xl font-semibold">Dashboard</h2>
+      <div class="flex items-center gap-4">
+        <span class="text-sm text-gray-500">Welcome, Admin</span>
+        <div class="w-9 h-9 bg-primary text-white flex items-center justify-center rounded-full">
+          A
+        </div>
+      </div>
+    </header>
 
-    <!-- STAT CARDS -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
+    <!-- CONTENT -->
+    <main class="flex-1 p-6 md:p-10 overflow-y-auto">
 
-      <div class="bg-white rounded-xl p-6 border">
-        <p class="text-sm text-slate-400">Total Users</p>
-        <p id="totalUsers" class="text-4xl font-bold mt-2">0</p>
+      <!-- STAT CARDS -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+
+        <!-- Users -->
+        <div class="bg-white rounded-xl p-6 shadow-sm border hover:shadow-md transition">
+          <p class="text-sm text-gray-400">Total Users</p>
+          <p id="totalUsers" class="text-4xl font-bold mt-2 text-primary">0</p>
+        </div>
+
+        <!-- Products -->
+        <div class="bg-white rounded-xl p-6 shadow-sm border hover:shadow-md transition">
+          <p class="text-sm text-gray-400">Total Products</p>
+          <p id="totalProducts" class="text-4xl font-bold mt-2 text-green-600">0</p>
+        </div>
+
+        <!-- Info Card -->
+        <div class="bg-gradient-to-r from-primary to-indigo-500 text-white rounded-xl p-6">
+          <p class="text-sm opacity-80">System Status</p>
+          <p class="text-xl font-semibold mt-2">All Systems Running 🚀</p>
+        </div>
+
       </div>
 
-      <div class="bg-white rounded-xl p-6 border">
-        <p class="text-sm text-slate-400">Total Products</p>
-        <p id="totalProducts" class="text-4xl font-bold mt-2">0</p>
+      <!-- LATEST USERS -->
+      <div class="bg-white rounded-xl shadow-sm border">
+
+        <div class="px-6 py-4 border-b flex justify-between items-center">
+          <h3 class="font-semibold text-gray-700">Latest Users</h3>
+          <a href="users.html"
+             class="text-sm text-primary hover:underline">
+            View all
+          </a>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead class="bg-gray-50 text-gray-500">
+              <tr>
+                <th class="px-6 py-3 text-left font-medium">Name</th>
+                <th class="px-6 py-3 text-left font-medium">Email</th>
+                <th class="px-6 py-3 text-left font-medium">Role</th>
+                <th class="px-6 py-3 text-left font-medium">Date</th>
+              </tr>
+            </thead>
+
+            <tbody id="latestUsers" class="divide-y">
+              <!-- Inject from JS -->
+            </tbody>
+
+          </table>
+        </div>
+
       </div>
 
-    </div>
+    </main>
+  </div>
 
-    <!-- LATEST USERS -->
-    <div class="bg-white rounded-xl border">
-
-      <div class="px-6 py-4 border-b flex justify-between items-center">
-        <h3 class="font-semibold">Latest Users</h3>
-        <a href="users.html"
-           class="text-sm text-indigo-600 hover:underline">
-          View all
-        </a>
-      </div>
-
-      <div class="overflow-x-auto">
-        <table class="w-full text-sm">
-          <thead class="bg-slate-50 text-slate-500">
-            <tr>
-              <th class="px-6 py-3 text-left">Name</th>
-              <th class="px-6 py-3 text-left">Email</th>
-              <th class="px-6 py-3 text-left">Role</th>
-              <th class="px-6 py-3 text-left">Date</th>
-            </tr>
-          </thead>
-          <tbody id="latestUsers">
-            <!-- JS inject -->
-          </tbody>
-        </table>
-      </div>
-
-    </div>
-
-  </main>
 </div>
 
 <script src="./js/dashboard.js"></script>
+
 </body>
 </html>
