@@ -8,7 +8,7 @@
 </head>
 
 <body class="bg-gray-50 text-gray-800">
-<script src="src/user.js"></script>
+
 <div class="flex h-screen">
 
   <!-- Sidebar -->
@@ -45,4 +45,39 @@
       <table class="w-full text-sm">
         <thead class="bg-gray-50 text-gray-500">
           <tr>
-            <th cla
+            <th class="px-6 py-3 text-left">Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Date</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="userTable" class="divide-y"></tbody>
+      </table>
+    </div>
+
+  </main>
+</div>
+
+<!-- Modal -->
+<div id="modal" class="hidden fixed inset-0 bg-black/40 flex items-center justify-center">
+  <div class="bg-white p-6 rounded-xl w-96">
+    <h3 class="text-lg font-semibold mb-4">User Form</h3>
+
+    <input id="name" placeholder="Name" class="border p-2 w-full mb-2 rounded">
+    <input id="email" placeholder="Email" class="border p-2 w-full mb-2 rounded">
+    <select id="role" class="border p-2 w-full mb-4 rounded">
+      <option>Admin</option>
+      <option>User</option>
+    </select>
+
+    <div class="flex justify-end gap-3">
+      <button onclick="closeModal()" class="px-4 py-2 border rounded">Cancel</button>
+      <button onclick="saveUser()" class="px-4 py-2 bg-indigo-600 text-white rounded">Save</button>
+    </div>
+  </div>
+</div>
+
+<script src="src/user.js"></script>
+</body>
+</html>
