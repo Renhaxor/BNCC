@@ -1,20 +1,48 @@
-import { getUsers, getProducts } from "./storage.js";
+function getUsers() {
+  return JSON.parse(localStorage.getItem("users")) || [];
+}
 
-document.getElementById("totalUsers").innerText = getUsers().length;
-document.getElementById("totalProducts").innerText = getProducts().length;
+function getProducts() {
+  return JSON.parse(localStorage.getItem("products")) || [];
+}
 
-const latestUsers = getUsers().slice(-5).reverse();
-const table = document.getElementById("latestUsers");
+function renderDashboard() {
+  const users = getUsers();
+  const products = getProducts();
 
-table.innerHTML = "";
+  // Update total
+  document.getElementById("totalUsers").textContent = users.length;
+  document.getElementById("totalProducts").textContent = products.length;
 
-latestUsers.forEach(user => {
-  table.innerHTML += `
-    <tr class="border-b">
-      <td class="py-3">${user.name}</td>
-      <td>${user.email}</td>
-      <td>${user.role}</td>
-      <td>${user.date}</td>
-    </tr>
-  `;
+  // Update latest users
+  const table = document.getElementById("latestUsers");
+  if (!table) return;
+
+  const latest = users.slice(-5).reverse();
+  table.innerHTML = "";
+
+  latest.forEach(user => {
+    table.innerHTML += `
+      <tr>
+        <td class="px-6 py-3">${user.name}</td>
+        <td class="px-6 py-3">${user.email}</td>
+        <td class="px-6 py-3">${user.role}</td>
+        <td class="px-6 py-3">${user.date}</td>
+      </tr>
+    `;
+  });
+}
+
+// Render pertama kali
+renderDashboard();
+
+// 🔥 AUTO UPDATE realtime antar tab
+window.addEventListener("storage", function (event) {
+  if (event.key === "users" || event.key === "products") {
+    renderDashboard();
+  }
 });
+
+// 🔥 AUTO UPDATE dalam halaman yang sama
+setInterval(renderDashboard, 1000);
+
